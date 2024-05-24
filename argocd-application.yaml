@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-gitpos
+  name: hoan-demo-gitpos
   namespace: argocd
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
@@ -9,13 +9,13 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/quoc9x/helm-cicd.git
+    repoURL: https://github.com/Luonghoann/helm-cicd.git
     targetRevision: HEAD
     path: .
 
     helm:
       # Release name override (defaults to application name)
-      releaseName: demo-gitops
+      releaseName: hoan-demo-gitops
       # Helm values files for overriding values in the helm chart
       # The path is relative to the spec.source.path directory defined above
       valueFiles:
@@ -26,7 +26,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: hoan
   # Sync policy
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
